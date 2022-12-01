@@ -18,7 +18,7 @@ export interface FoodProps {
 
 export function Dashboard(){
   const [foods, setFoods] = useState<FoodProps[]>([]);
-  const [editingFood, setEditingFood] = useState<FoodProps>();
+  const [editingFood, setEditingFood] = useState<FoodProps>({} as FoodProps);
   const [modalOpen, setModaOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
 
@@ -32,7 +32,7 @@ export function Dashboard(){
 
  async function handleAddFood(food: FoodProps){
     try {
-      const response = await api.post<FoodProps>('/foods', {
+      const response = await api.post('/foods', {
         ...food,
         available: true,
       });
